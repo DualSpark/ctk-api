@@ -110,6 +110,17 @@ Just include `ctk-api` in your node's `run_list`:
 }
 ```
 
+Building Images on AWS
+______________________
+
+To build images on AWS, you'll need to run the following command before you run Packer against the imagebuild.packer.json file to bundle all of the cookbooks together:
+
+```
+bundle exec berks vendor
+```
+
+Fairly soon the need to do this will go away given that there's now a PR in to handle preCommand hooks for the chef-solo provisioner in Packer: https://github.com/maoo/packer/commit/aa58996caa7569eb3f8365f5da149ce4d9d90613
+
 Contributing
 ------------
 
