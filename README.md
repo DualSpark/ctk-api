@@ -121,6 +121,14 @@ bundle exec berks vendor
 
 Fairly soon the need to do this will go away given that there's now a PR in to handle preCommand hooks for the chef-solo provisioner in Packer: https://github.com/maoo/packer/commit/aa58996caa7569eb3f8365f5da149ce4d9d90613
 
+To run the actual packer build, run the following command:
+
+```
+packer build imagebuild.packer.json
+```
+
+This process assumes you've set your AWS keys in an AWS credentials file.  Otherwise, you can pass these variables in via packer varibles.
+
 Contributing
 ------------
 
