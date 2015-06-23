@@ -7,11 +7,9 @@ provisioner:
 
 platforms:
   - name: ubuntu-14.04
-    provisioner:
-      sudo_command: sudo -H -E
   - name: centos-6.4
-    provisioner:
-      sudo_command: sudo -H -E
+  - name: fedora-19
+  - name: debian-7.8
 
 suites:
   - name: default

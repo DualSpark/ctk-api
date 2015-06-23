@@ -9,9 +9,7 @@
 
 # fix for installing python from source... force apt-get update via inclusion of apt recipe
 # needed bc we are pulling build-essential in for the psutil package
-if node["platform_family"] == "debian"
-    include_recipe 'apt'
-end
+include_recipe 'apt' if node['platform_family'] == 'debian'
 
 # build-essential for psutil python package
 include_recipe "build-essential"
