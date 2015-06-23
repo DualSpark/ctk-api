@@ -127,7 +127,14 @@ To run the actual packer build, run the following command:
 packer build imagebuild.packer.json
 ```
 
-This process assumes you've set your AWS keys in an AWS credentials file.  Otherwise, you can pass these variables in via packer varibles.
+This process assumes you've set your AWS keys in an AWS credentials file.  Otherwise, you can pass these variables in via Packer user varibles.
+
+```
+packer build \
+    -var 'aws_access_key=foo' \
+    -var 'aws_secret_key=bar' \
+    imagebuild.packer.json
+```
 
 Contributing
 ------------
