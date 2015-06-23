@@ -13,7 +13,9 @@
       "source_ami": "ami-5189a661",
       "instance_type": "m3.large",
       "ssh_username": "ubuntu",
-      "ami_name": "packer-{{user `api_name`}}-{{timestamp}}"
+      "ami_name": "packer-{{user `api_name`}}-{{timestamp}}",
+      "ami_description": "Demo AMI for deploying CTK API Microservice system - ctk-api-episode endpoint",
+      "ami_regions": ["us-west-1", "us-east-1"]
     }
   ],
   "provisioners": [
