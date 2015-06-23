@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "aws_access_key_id": "",
+    "aws_secret_key": "",
+    "api_name": "ctk-api-episode"
+  },
+
+  "builders": [
+
+    { "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key_id`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "us-west-2",
+      "source_ami": "ami-2b0b1442",
+      "instance_type": "m3.large",
+      "ssh_username": "ubuntu",
+      "ami_name": "packer-{{user `api_name`}}-{{timestamp}}"
+    }
+  ],
+
+  "provisioners" : [
+    { "type": "chef-solo",
+      "cookbook_paths": [ "../" ],
+      "run_list": [ "ctk-api::default" ]
+    }
+  ]
+
+}

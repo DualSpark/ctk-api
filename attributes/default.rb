@@ -1,1 +1,12 @@
-default['ctk-api']['uri_base'] = '/'
+default['build-essential']['compile_time'] = true
+default['python']['install_method'] = 'package'
+default['python']['version'] = '2.7.10'
+default['python']['checksum'] = 'eda8ce6eec03e74991abb5384170e7c65fcd7522e409b8e83d7e6372add0f12a'
+default['beaver']['version'] = '33.3.0'
+default['ctk-api']['package_name'] = 'ctk-api-episode'
+default['ctk-api']['package_version'] = '0.1.0'
+default['ctk-api']['package_location'] = "https://s3-us-west-2.amazonaws.com/packages.dualspark.com/dev/ctk-api-episode/#{node['ctk-api']['package_name']}-#{node['ctk-api']['package_version']}.tar.gz"
+default['ctk-api']['name'] = 'episode'
+default['ctk-api']['single_uri_base'] = "/#{node['ctk-api']['name']}"
+default['ctk-api']['list_uri_base'] = "/#{node['ctk-api']['name']}s"
+default['ctk-api']['healthcheck_base'] = '/healthcheck'

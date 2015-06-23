@@ -6,8 +6,12 @@ provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-12.04
+  - name: ubuntu-14.04
+    provisioner:
+      sudo_command: sudo -H -E
   - name: centos-6.4
+    provisioner:
+      sudo_command: sudo -H -E
 
 suites:
   - name: default
