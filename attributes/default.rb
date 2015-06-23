@@ -1,3 +1,4 @@
+default['apt']['compile_time_update'] = true
 default['build-essential']['compile_time'] = true
 default['python']['install_method'] = 'package'
 default['python']['version'] = '2.7.10'

@@ -10,12 +10,10 @@
 # fix for installing python from source... force apt-get update via inclusion of apt recipe
 # needed bc we are pulling build-essential in for the psutil package
 if node["platform_family"] == "debian"
-    node.override['apt']['compile_time_update'] = true
     include_recipe 'apt'
 end
 
 # build-essential for psutil python package
-node.override['build-essential']['compile_time'] = true
 include_recipe "build-essential"
 
 # https://supermarket.chef.io/cookbooks/python
