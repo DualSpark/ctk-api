@@ -1,5 +1,7 @@
 CTK-API Cookbook
 =================
+[![Build Status](https://ci.dualspark.com/api/badge/github.com/DualSpark/ctk-api/status.svg?branch=master)](https://ci.dualspark.com/github.com/DualSpark/ctk-api)
+
 This cookbook deploys the individual services that make up the DualSpark Cutthroat Kitchen Microservice API platform.
 
 Requirements
