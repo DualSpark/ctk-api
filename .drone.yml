@@ -4,4 +4,4 @@ git:
 script:
   - bundle exec berks vendor
   - if [ "$DRONE_BRANCH" = "master" ]; then packer build imagebuild.packer.json | tee -a imagebuild.output.txt; else echo "Commit Branch $DRONE_BRANCH not configured to push to S3."; fi
-  - if [ "$DRONE_BRANCH" = "master" ]; then line=$(grep 'amazon-ebs,artifact,0,id' imagebuild.output.txt);image_details=`echo "${line##*,}" | sed 's/%!(PACKER_COMMA)/,/g'`;aws dynamodb put-item --table-name ctk-api-deploydata --item '{"tier_name":{"S":"'$tier_name'"},"timestamp":{"N":'$(date +"%s")'}, "image_details": {"S": "'$image_details'"}}'; else echo "Commit branch $DRONE_BRANCH not configured to update image data"; fi
+  - if [ "$DRONE_BRANCH" = "master" ]; then line=$(grep 'amazon-ebs,artifact,0,id' imagebuild.output.txt);image_details=$(echo "${line##*,}" | sed 's/%!(PACKER_COMMA)/,/g');aws dynamodb put-item --table-name ctk-api-deploydata --item '{"tier_name":{"S":"'$tier_name'"},"timestamp":{"N":'$(date +"%s")'}, "image_details": {"S": "'$image_details'"}}';else echo "Commit Branch $DRONE_BRANCH not configured to push to S3."; fi
