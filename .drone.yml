@@ -1,4 +1,4 @@
-image: dualspark/chef-imagebuild
+image: dualspark/chef-imagebuilder
 git:
     path: github.com/dualspark/ctk-api
 script:
