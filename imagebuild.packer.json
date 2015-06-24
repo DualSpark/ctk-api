@@ -2,7 +2,9 @@
   "variables": {
     "aws_access_key_id": "",
     "aws_secret_key": "",
-    "api_name": "ctk-api-episode"
+    "package_name": "ctk-api-episode",
+    "package_version" : "0.1.0",
+    "api_name" : "episode"
   },
   "builders": [
     {
@@ -11,11 +13,10 @@
       "secret_key": "{{user `aws_secret_key`}}",
       "region": "us-west-2",
       "source_ami": "ami-5189a661",
-      "instance_type": "m3.large",
+      "instance_type": "t2.medium",
       "ssh_username": "ubuntu",
-      "ami_name": "packer-{{user `api_name`}}-{{timestamp}}",
-      "ami_description": "Demo AMI for deploying CTK API Microservice system - ctk-api-episode endpoint",
-      "ami_regions": ["us-west-1", "us-east-1"]
+      "ami_name": "dualspark-{{user `api_name`}}-{{timestamp}}",
+      "ami_description": "Demo AMI for deploying CTK API Microservice system - ctk-api-episode endpoint"
     }
   ],
   "provisioners": [
@@ -26,7 +27,14 @@
       ],
       "run_list": [
         "ctk-api::default"
-      ]
+      ],
+      "json": {
+        "ctk-api": {
+          "package_name": "{{user `package_name`}}",
+          "package_version" : "{{user `package_version`}}",
+          "name": "{{user `api_name`}}"
+        }
+      }
     }
   ]
 }
