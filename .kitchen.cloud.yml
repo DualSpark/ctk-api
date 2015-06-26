@@ -1,0 +1,44 @@
+---
+driver:
+  name: ec2
+  aws_ssh_key_id: pmdev
+  security_group_ids: ["sg-1da05c79"]
+  region: us-west-2
+  availability_zone: a
+  require_chef_omnibus: true
+  subnet_id: subnet-fb907d8c
+  instance_type: m3.medium
+  associate_public_ip: true
+  interface: dns
+
+transport:
+  ssh_key: ~/.ssh/id_rsa
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: ubuntu-14.04
+    driver:
+      image_id: ami-5189a661
+  - name: centos-6.4
+    driver:
+      image_id: ami-b3bf2f83
+  - name: ubuntu-13.10
+    driver:
+      image_id: ami-0fceb93f
+  - name: ubuntu-13.04
+    driver:
+      image_id: ami-38d6b008
+  - name: ubuntu-12.10
+    driver:
+      image_id: ami-026a0932
+  - name: ubuntu-12.04
+    driver:
+      image_id: ami-155a6125
+
+suites:
+  - name: default
+    run_list:
+      - recipe[ctk-api::default]
+    attributes:

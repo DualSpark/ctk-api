@@ -12,7 +12,7 @@
 include_recipe 'apt' if node['platform_family'] == 'debian'
 
 # build-essential for psutil python package
-include_recipe "build-essential"
+include_recipe 'build-essential'
 
 # https://supermarket.chef.io/cookbooks/python
 include_recipe 'python'
