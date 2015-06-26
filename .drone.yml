@@ -2,6 +2,7 @@ image: dualspark/chef-imagebuilder
 git:
     path: github.com/dualspark/ctk-api
 script:
+  - bundle install
   - bundle exec berks vendor
   - if [ "$DRONE_BRANCH" = "master" ]; then packer build imagebuild.packer.json | tee -a imagebuild.output.txt; else echo "Commit Branch $DRONE_BRANCH not configured to push to S3."; fi
   - if [ "$DRONE_BRANCH" = "master" ]; then bash buildprocess.sh $tier_name;else echo "Commit Branch $DRONE_BRANCH not configured to push to S3."; fi
