@@ -4,14 +4,15 @@
     "aws_secret_key": "",
     "package_name": "ctk-api-episode",
     "package_version" : "0.1.0",
-    "api_name" : "episode"
+    "api_name" : "episode",
+    "aws_region": "us-west-2"
   },
   "builders": [
     {
       "type": "amazon-ebs",
       "access_key": "{{user `aws_access_key_id`}}",
       "secret_key": "{{user `aws_secret_key`}}",
-      "region": "us-west-2",
+      "region": "{{user `aws_region`}}",
       "source_ami": "ami-5189a661",
       "instance_type": "t2.medium",
       "ssh_username": "ubuntu",
